@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body class="<%= bgClass %>">
+  <div class="weather-card">
+    <h1>Weather App ☁️</h1>
+
+    <form action="/weather" method="POST">
+      <input type="text" name="city" placeholder="Enter city name" required>
+      <button type="submit">Get Weather</button>
+    </form>
+
+    <% if (weather) { %>
+      <div class="result">
+        <h2><%= city %></h2>
+        <p><%= weather.weather[0].description %></p>
+        <h3><%= Math.round(weather.main.temp - 273.15) %>°C</h3>
+      </div>
+    <% } %>
+    
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+    
+  </div>
+</body>
+</html>
